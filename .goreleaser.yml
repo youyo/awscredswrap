@@ -1,0 +1,53 @@
+before:
+  hooks:
+    - go mod download
+
+builds:
+  - main: ./awscredswrap/main.go
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      -X github.com/youyo/awscredswrap/awscredswrap/cmd.Version={{ .Version }}
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+archives:
+  - id: github release
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    files:
+      - LICENSE
+      - README.md
+      - _awscredswrap
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+brews:
+  -
+    github:
+      owner: youyo
+      name: homebrew-tap
+    folder: Formula
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+    description: "awscredswrap uses temporary credentials for the specified iam role to set a shell environment variable or execute a command."
+    homepage: "https://github.com/youyo/awscredswrap"
+    install: |
+      bin.install "awscredswrap"
+      zsh_completion.install '_awscredswrap'
+    test: |
+      system "#{bin}/awscredswrap --version"

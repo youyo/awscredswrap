@@ -1,0 +1,11 @@
+#compdef awscredswrap
+
+_awscredswrap() {
+	_arguments -w \
+		'(- *)'{-h,--help}'[show help]' \
+		'(-d --duration-seconds)'{-d,--duration-seconds}'[The duration, in seconds, of the role session. (default 3600)]' \
+		'(-m --mfa-serial)'{-m,--mfa-serial}'[The identification number of the MFA device that is associated with the user who is making the AssumeRole call.]' \
+		'(-r --role-arn)'{-r,--role-arn}'[The arn of the role to assume.]' \
+		'(-n --role-session-name)'{-n,--role-session-name}'[An identifier for the assumed role session.]' \
+		'--version[version for awscredswrap]'
+}
