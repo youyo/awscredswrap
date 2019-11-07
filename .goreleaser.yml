@@ -24,6 +24,12 @@ archives:
       - LICENSE
       - README.md
       - _awscredswrap
+  - id: binary only
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    format: binary
 checksum:
   name_template: 'checksums.txt'
 snapshot:
