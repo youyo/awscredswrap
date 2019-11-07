@@ -24,5 +24,5 @@ package main
 import "github.com/youyo/awscredswrap/awscredswrap/cmd"
 
 func main() {
-  cmd.Execute()
+	cmd.Execute()
 }
