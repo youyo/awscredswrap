@@ -1,0 +1,19 @@
+name: 'AWS Assume role GitHub Actions'
+description: 'Runs awscredswrap via GitHub Actions.'
+author: 'youyo <1003ni2@gmail.com>'
+branding:
+  icon: 'terminal'
+  color: 'blue'
+inputs:
+  duration_seconds:
+    description: 'The duration, in seconds, of the role session. (default 3600)'
+    default: 3600
+  role_arn:
+    description: 'The arn of the role to assume.'
+    required: true
+  role_session_name:
+    description: 'An identifier for the assumed role session.'
+    default: 'awscredswrap@GitHubActions'
+runs:
+  using: 'docker'
+  image: 'github-actions/Dockerfile'
