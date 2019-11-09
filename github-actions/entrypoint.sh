@@ -2,9 +2,6 @@
 
 set -ue
 
-echo ${INPUT_ROLE_ARN} > aaa
-cat aaa
-
 eval "$(/awscredswrap --role-arn ${INPUT_ROLE_ARN} --role-session-name ${INPUT_ROLE_SESSION_NAME} --duration-seconds ${INPUT_DURATION_SECONDS})"
 
 echo ::add-mask::${AWS_ACCESS_KEY_ID}
