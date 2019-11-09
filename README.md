@@ -9,9 +9,9 @@ AWS assume role credential wrapper.
 
 awscredswrap uses temporary credentials for the specified iam role to set a shell environment variable or execute a command.
 
-# Use as CLI
+## Use as CLI
 
-## Install
+### Install
 
 - Brew
 
@@ -21,7 +21,7 @@ $ brew install youyo/tap/awscredswrap
 
 Other platforms are download from [github release page](https://github.com/youyo/awscredswrap/releases).
 
-## Usage
+### Usage
 
 ```bash
 $ awscredswrap --help
@@ -39,13 +39,13 @@ Flags:
       --version                    version for awscredswrap
 ```
 
-### As command wrapper
+#### As command wrapper
 
 ```console
 $ awscredswrap --role-arn arn:aws:iam::00000000:role/foo -- some_command [arg1 arg2...]
 ```
 
-### As env exporter
+#### As env exporter
 
 When awscredswrap is executed with no arguments, awscredswrap outputs shell script to export AWS credentials environment variables.
 
@@ -65,23 +65,15 @@ $ eval $(awscredswrap --role-arn arn:aws:iam::00000000:role/foo)
 
 Temporary credentials has expiration time (about 1 hour).
 
-# Use as GitHub Actions
+## Use as GitHub Actions
 
-## Inputs
+### Inputs
 
-### `role_arn`
+-  `role_arn` **Required** The arn of the role to assume.
+-  `role_session_name` An identifier for the assumed role session. (default awscredswrap@GitHubActions)
+-  `duration_seconds` The duration, in seconds, of the role session. (default 3600)
 
-**Required** The arn of the role to assume.
-
-### `role_session_name`
-
-An identifier for the assumed role session. (default awscredswrap@GitHubActions)
-
-### `duration_seconds`
-
-The duration, in seconds, of the role session. (default 3600)
-
-## ENV
+### ENV
 
 - `AWS_ACCESS_KEY_ID` **Required**
 - `AWS_SECRET_ACCESS_KEY` **Required**
@@ -89,7 +81,7 @@ The duration, in seconds, of the role session. (default 3600)
 
 Recommended to get `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from secrets.
 
-## Example usage
+### Example usage
 
 ```yaml
 on: [push]
