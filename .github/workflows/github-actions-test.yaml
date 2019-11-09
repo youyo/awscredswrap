@@ -1,3 +1,5 @@
+name: GitHub Actions Test
+
 on: [push]
 
 jobs:
@@ -7,13 +9,12 @@ jobs:
       - name: Assume Role
         uses: youyo/awscredswrap@master
         with:
-          role_arn: ${ROLE_ARN}
+          role_arn: ${{ secrets.ROLE_ARN }}
           duration_seconds: 3600
           role_session_name: 'awscredswrap@GitHubActions'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          ROLE_ARN: ${{ secrets.ROLE_ARN }}
           AWS_DEFAULT_REGION: 'ap-northeast-1'
       - name: Identity Check
         uses: actions/aws/cli@master
