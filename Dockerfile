@@ -5,9 +5,8 @@ ADD . ${DIR}
 RUN apk add --update --no-cache ca-certificates git
 RUN go build -o dist/awscredswrap awscredswrap/main.go
 
-FROM alpine:latest
+FROM alpine:3
 LABEL maintainer "youyo <1003ni2@gmail.com>"
-ENV DIR /go/src/github.com/youyo/awscredswrap
-COPY --from=build-env ${DIR}/dist/awscredswrap /awscredswrap
-RUN apk add --update --no-cache ca-certificates
+COPY --from=build-env /go/src/github.com/youyo/awscredswrap/dist/awscredswrap /awscredswrap
+RUN apk add --update --no-cache ca-certificates bash
 ENTRYPOINT ["/awscredswrap"]
