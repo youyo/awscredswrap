@@ -67,6 +67,8 @@ Temporary credentials has expiration time (about 1 hour).
 
 ## Use as GitHub Actions
 
+DEPRECATED IN FAVOR OF THE OFFICIAL [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
+
 ### Inputs
 
 -  `role_arn` **Required** The arn of the role to assume.
