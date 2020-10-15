@@ -102,10 +102,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'ap-northeast-1'
+      - name: Install aws-cli
+        uses: chrislennon/action-aws-cli@v1.1
       - name: Identity Check
-        uses: actions/aws/cli@v1
-        with:
-          args: sts get-caller-identity
+        run: aws sts get-caller-identity
 ```
 
 ## License
