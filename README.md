@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assume Role
-        uses: youyo/awscredswrap@master
+        uses: youyo/awscredswrap@v1
         with:
           role_arn: ${{ secrets.ROLE_ARN }}
           duration_seconds: 3600
@@ -103,7 +103,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'ap-northeast-1'
       - name: Identity Check
-        uses: actions/aws/cli@master
+        uses: actions/aws/cli@v1
         with:
           args: sts get-caller-identity
 ```
